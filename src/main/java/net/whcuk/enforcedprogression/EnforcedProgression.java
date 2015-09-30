@@ -14,29 +14,35 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.whcuk.enforcedprogression.items.Register;
 import net.whcuk.enforcedprogression.recipes.RecipeHandler;
+import net.whcuk.enforcedprogression.utils.Logging;
 
 @Mod(modid = Utils.MODID, version = Utils.VERSION, name = Utils.NAME)
 public class EnforcedProgression
 {
-	// TODO: Change Vanilla Pick Textures --> iron handle?
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event)
 	{
+		Logging.logInfo("Entering PreInit Stage");
 		Register.doCreateItems();
+		Logging.logInfo("Finished PreInit Stage");
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		Logging.logInfo("Entering Init Stage");
 		RecipeHandler.RemoveVanillaRecipes();
 		RecipeHandler.AddShapedRecipes();
+		Logging.logInfo("Exiting Init Stage");
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
+		Logging.logInfo("Entering PostInit Stage");
 		//Stuff
+		Logging.logInfo("Exiting PostInit Stage");
 	}
 
 	public static CreativeTabs tabEnforcedProgression = new CreativeTabs("ep")//Create a tab in the creative menu

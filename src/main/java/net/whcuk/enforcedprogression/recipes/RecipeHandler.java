@@ -15,6 +15,7 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.whcuk.enforcedprogression.items.Register;
+import net.whcuk.enforcedprogression.utils.Logging;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.FMLLog;
 
@@ -68,44 +69,44 @@ public class RecipeHandler
 			if (tmpRecipe instanceof ShapedRecipes) // If it's shaped
 			{
 				ShapedRecipes recipe = (ShapedRecipes) tmpRecipe; // Decode it
-				// FMLLog.getLogger().log(org.apache.logging.log4j.Level.DEBUG, "[EnforcedProgression] Scanning SHAPED Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
+				// Logging.logDebug("Scanning SHAPED Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
 				recipeResult = recipe.getRecipeOutput(); // Get the output
 				if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) // If the item is what we were looking for
 				{
 					Success = true;
 					recipes.remove(scan); // Remove the recipe
-					FMLLog.getLogger().log(org.apache.logging.log4j.Level.INFO, "[EnforcedProgression] Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
+					Logging.logInfo("Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
 				}
 			}
 			if (tmpRecipe instanceof ShapelessRecipes) // If it's shapeless
 			{
 				ShapelessRecipes recipe = (ShapelessRecipes) tmpRecipe; // Decode it
-				// FMLLog.getLogger().log(org.apache.logging.log4j.Level.DEBUG, "[EnforcedProgression] Scanning SHAPELESS Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
+				// Logging.logDebug("Scanning SHAPELESS Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
 				recipeResult = recipe.getRecipeOutput(); // Get the output
 				if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) // If the item is what we were looking for
 				{
 					Success = true;
 					recipes.remove(scan); // Remove the recipe
-					FMLLog.getLogger().log(org.apache.logging.log4j.Level.INFO, "[EnforcedProgression] Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
+					Logging.logInfo("Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
 				}
 
 			}
 			if (tmpRecipe instanceof ShapedOreRecipe) // If it's a forge absurdity :D
 			{
 				ShapedOreRecipe recipe = (ShapedOreRecipe) tmpRecipe; // Decode it
-				// FMLLog.getLogger().log(org.apache.logging.log4j.Level.DEBUG, "[EnforcedProgression] Scanning OREDICT Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
+				// Logging.logDebug("Scanning OREDICT Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
 				recipeResult = recipe.getRecipeOutput(); // Get the output
 				if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) // If the item is what we were looking for
 				{
 					Success = true;
 					recipes.remove(scan); // Remove the recipe
-					FMLLog.getLogger().log(org.apache.logging.log4j.Level.INFO, "[EnforcedProgression] Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
+					Logging.logInfo("Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
 				}
 			}
 		}
 		if (Success == false)
 		{
-			FMLLog.getLogger().log(org.apache.logging.log4j.Level.ERROR, "[EnforcedProgression] FAILED to Remove Recipe: " + resultItem); // Log that it failed to be removed.
+			Logging.logErr("FAILED to Remove Recipe: " + resultItem); // Log that it failed to be removed.
 		}
 	}
 }
