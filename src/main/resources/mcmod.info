@@ -1,0 +1,16 @@
+[
+{
+  "modid": "enforcedprogression",
+  "name": "Enforced Progression",
+  "description": "Makes the game harder, because it's unrealistic.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["SamboyGaming"],
+  "credits": "kidsfarm2, for helping with ideas.",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": [forge]
+}
+]
