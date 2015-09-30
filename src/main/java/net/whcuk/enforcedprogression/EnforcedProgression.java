@@ -4,6 +4,7 @@ package net.whcuk.enforcedprogression;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,7 +18,7 @@ import net.whcuk.enforcedprogression.recipes.RecipeHandler;
 @Mod(modid = Utils.MODID, version = Utils.VERSION, name = Utils.NAME)
 public class EnforcedProgression
 {
-	//TODO: Change Vanilla Pick Textures --> iron handle?
+	// TODO: Change Vanilla Pick Textures --> iron handle?
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event)
@@ -30,6 +31,12 @@ public class EnforcedProgression
 	{
 		RecipeHandler.RemoveVanillaRecipes();
 		RecipeHandler.AddShapedRecipes();
+	}
+
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event)
+	{
+		//Stuff
 	}
 
 	public static CreativeTabs tabEnforcedProgression = new CreativeTabs("ep")//Create a tab in the creative menu
