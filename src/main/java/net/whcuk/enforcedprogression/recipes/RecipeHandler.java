@@ -51,10 +51,10 @@ public class RecipeHandler
 	public static void RemoveVanillaRecipes()
 	{
 		RemoveRecipe(new ItemStack(Items.wooden_pickaxe)); // Remove the recipe for a wooden pick
-		RemoveRecipe(new ItemStack(Items.stone_pickaxe)); // Remove the recipe for a wooden pick
-		RemoveRecipe(new ItemStack(Items.iron_pickaxe)); // Remove the recipe for a wooden pick
-		RemoveRecipe(new ItemStack(Items.golden_pickaxe)); // Remove the recipe for a wooden pick
-		RemoveRecipe(new ItemStack(Items.diamond_pickaxe)); // Remove the recipe for a wooden pick
+		RemoveRecipe(new ItemStack(Items.stone_pickaxe)); // Remove the recipe for a stone pick
+		RemoveRecipe(new ItemStack(Items.iron_pickaxe)); // Remove the recipe for a iron pick
+		RemoveRecipe(new ItemStack(Items.golden_pickaxe)); // Remove the recipe for a gold pick
+		RemoveRecipe(new ItemStack(Items.diamond_pickaxe)); // Remove the recipe for a diamond pick
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
 	}
 
