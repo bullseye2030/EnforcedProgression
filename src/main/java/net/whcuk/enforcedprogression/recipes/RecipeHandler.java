@@ -55,6 +55,13 @@ public class RecipeHandler
 		RemoveRecipe(new ItemStack(Items.iron_pickaxe)); // Remove the recipe for a iron pick
 		RemoveRecipe(new ItemStack(Items.golden_pickaxe)); // Remove the recipe for a gold pick
 		RemoveRecipe(new ItemStack(Items.diamond_pickaxe)); // Remove the recipe for a diamond pick
+		
+		RemoveRecipe(new ItemStack(Items.wooden_sword)); // Remove the recipe for a wooden sword
+		RemoveRecipe(new ItemStack(Items.stone_sword)); // Remove the recipe for a stone sword
+		RemoveRecipe(new ItemStack(Items.iron_sword)); // Remove the recipe for a iron sword
+		RemoveRecipe(new ItemStack(Items.golden_sword)); // Remove the recipe for a gold sword
+		RemoveRecipe(new ItemStack(Items.diamond_sword)); // Remove the recipe for a diamond sword
+		
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
 	}
 
