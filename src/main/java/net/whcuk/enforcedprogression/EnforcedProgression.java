@@ -23,26 +23,26 @@ public class EnforcedProgression
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event)
 	{
-		Logging.logInfo("Entering PreInit Stage");
+		Logging.logInfo("Begin Loading...");
 		Register.doCreateItems();
-		Logging.logInfo("Finished PreInit Stage");
+		Logging.logInfo("Finished Stage 1 Loading...");
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		Logging.logInfo("Entering Init Stage");
+		Logging.logInfo("Entering Main Loading Sequence");
 		RecipeHandler.RemoveVanillaRecipes();
 		RecipeHandler.AddShapedRecipes();
-		Logging.logInfo("Exiting Init Stage");
+		Logging.logInfo("Finished Main Loading Sequence");
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event)
 	{
-		Logging.logInfo("Entering PostInit Stage");
+		Logging.logInfo("Beginning Final Loading Sequence...");
 		//Stuff
-		Logging.logInfo("Exiting PostInit Stage");
+		Logging.logInfo("Finished Loading...");
 	}
 
 	public static CreativeTabs tabEnforcedProgression = new CreativeTabs("ep")//Create a tab in the creative menu

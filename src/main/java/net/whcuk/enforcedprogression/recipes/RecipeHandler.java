@@ -21,6 +21,11 @@ import cpw.mods.fml.common.FMLLog;
 
 public class RecipeHandler
 {
+	public static void AddRecipeShaped(ItemStack result, Object[]...Args)
+	{
+		GameRegistry.addRecipe(result, Args)
+		Logging.logInfo("Adding Recipe for " + result)
+	}
 	public static void AddShapedRecipes()
 	{
 		// Components
