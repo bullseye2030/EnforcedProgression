@@ -61,7 +61,7 @@ public class RecipeHandler
 		
 		//Saws
 		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log});
-		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2});
+		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2}); //For Acacia + DarkOak
 
 		// Other
 		AddRecipeShaped(new ItemStack(Blocks.furnace), new Object[] { "csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone });
