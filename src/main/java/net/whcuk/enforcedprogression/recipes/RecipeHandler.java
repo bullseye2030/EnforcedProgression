@@ -14,7 +14,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.RecipesTools;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.whcuk.enforcedprogression.items.Register;
 import net.whcuk.enforcedprogression.utils.Logging;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -22,10 +24,16 @@ import cpw.mods.fml.common.FMLLog;
 
 public class RecipeHandler
 {
-	public static void AddRecipeShaped(ItemStack result, Object...Args)
+	public static void AddRecipeShaped(ItemStack result, Object... Args)
 	{
-			GameRegistry.addRecipe(result, Args);	
-			Logging.logDebug("Success in Adding EnforcedProgression Recipe for " + result.getDisplayName());
+		GameRegistry.addRecipe(result, Args);
+		Logging.logDebug("Success in Adding Shaped EnforcedProgression Recipe for " + result.getDisplayName());
+	}
+
+	public static void AddRecipeShapeless(ItemStack result, Object... Args)
+	{
+		GameRegistry.addShapelessRecipe(result, Args);
+		Logging.logDebug("Success in Adding Shapeless EnforcedProgression Recipe for " + result.getDisplayName());
 	}
 
 	public static void AddShapedRecipes()
@@ -55,6 +63,16 @@ public class RecipeHandler
 		AddRecipeShaped(new ItemStack(Blocks.furnace), new Object[] { "csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone });
 	}
 
+	public static void AddShapelessRecipes()
+	{
+		AddRecipeShapeless(new ItemStack(Blocks.planks,1,0), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,0)});
+		AddRecipeShapeless(new ItemStack(Blocks.planks,1,1), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,1)});
+		AddRecipeShapeless(new ItemStack(Blocks.planks,1,2), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,2)});
+		AddRecipeShapeless(new ItemStack(Blocks.planks,1,3), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,3)});
+		AddRecipeShapeless(new ItemStack(Blocks.planks,1,4), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2,1,0)});
+		AddRecipeShapeless(new ItemStack(Blocks.planks,1,5), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2,1,1)});
+	}
+
 	public static void RemoveVanillaRecipes()
 	{
 		RemoveRecipe(new ItemStack(Items.wooden_pickaxe)); // Remove the recipe for a wooden pick
@@ -70,6 +88,12 @@ public class RecipeHandler
 		RemoveRecipe(new ItemStack(Items.diamond_sword)); // Remove the recipe for a diamond sword
 
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
+		RemoveRecipe(new ItemStack(Blocks.planks,4));
+		RemoveRecipe(new ItemStack(Blocks.planks,4,1));
+		RemoveRecipe(new ItemStack(Blocks.planks,4,2));
+		RemoveRecipe(new ItemStack(Blocks.planks,4,3));
+		RemoveRecipe(new ItemStack(Blocks.planks,4,4));
+		RemoveRecipe(new ItemStack(Blocks.planks,4,5));
 	}
 
 	private static void RemoveRecipe(ItemStack resultItem)
@@ -108,6 +132,18 @@ public class RecipeHandler
 			if (tmpRecipe instanceof ShapedOreRecipe) // If it's a forge absurdity :D
 			{
 				ShapedOreRecipe recipe = (ShapedOreRecipe) tmpRecipe; // Decode it
+				// Logging.logDebug("Scanning OREDICT Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
+				recipeResult = recipe.getRecipeOutput(); // Get the output
+				if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) // If the item is what we were looking for
+				{
+					Success = true;
+					recipes.remove(scan); // Remove the recipe
+					Logging.logInfo("Successfully Removed Recipe: " + recipes.get(scan) + " -> " + recipeResult.getDisplayName()); // Log that it was removed.
+				}
+			}
+			if (tmpRecipe instanceof ShapelessOreRecipe) // If it's another forge absurdity :D
+			{
+				ShapelessOreRecipe recipe = (ShapelessOreRecipe) tmpRecipe; // Decode it
 				// Logging.logDebug("Scanning OREDICT Recipe " + recipe + "--> " + recipe.getRecipeOutput()); // Debug Log.
 				recipeResult = recipe.getRecipeOutput(); // Get the output
 				if (ItemStack.areItemStacksEqual(resultItem, recipeResult)) // If the item is what we were looking for

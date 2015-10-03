@@ -34,6 +34,7 @@ public class EnforcedProgression
 		Logging.logInfo("Entering Main Loading Sequence");
 		RecipeHandler.RemoveVanillaRecipes();
 		RecipeHandler.AddShapedRecipes();
+		RecipeHandler.AddShapelessRecipes();
 		Logging.logInfo("Finished Main Loading Sequence");
 	}
 

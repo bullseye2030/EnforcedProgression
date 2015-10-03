@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.whcuk.enforcedprogression.items.furnace.*;
 import net.whcuk.enforcedprogression.items.pickaxe.*;
+import net.whcuk.enforcedprogression.items.saw.Makeshift;
 import net.whcuk.enforcedprogression.items.swords.*;
 import net.whcuk.enforcedprogression.utils.Utils;
 
@@ -26,6 +27,7 @@ public class Register
 	public static Item SwordBladeIron;
 	public static Item SwordBladeGold;
 	public static Item SwordBladeDiamond;
+	public static Item SawMakeshift;
 	
 
 	public static void doCreateItems()
@@ -45,6 +47,7 @@ public class Register
 		SwordBladeIron = new SwordBladeIron();
 		SwordBladeGold = new SwordBladeGold();
 		SwordBladeDiamond = new SwordBladeDiamond();
+		SawMakeshift= new Makeshift();
 
 		GameRegistry.registerItem(ToolHandle, "item1");
 		GameRegistry.registerItem(PickaxeHeadWood, "item2");
@@ -61,6 +64,7 @@ public class Register
 		GameRegistry.registerItem(SwordBladeIron, "item13");
 		GameRegistry.registerItem(SwordBladeGold, "item14");
 		GameRegistry.registerItem(SwordBladeDiamond, "item15");
+		GameRegistry.registerItem(SawMakeshift, "item16");
 	}
 
 }
