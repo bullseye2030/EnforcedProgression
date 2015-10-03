@@ -1,29 +1,46 @@
 package net.whcuk.enforcedprogression;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 // Forge Imports
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 // My Imports
 import net.whcuk.enforcedprogression.utils.Utils;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.world.World;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.config.Configuration;
 import net.whcuk.enforcedprogression.items.Register;
+import net.whcuk.enforcedprogression.listener.JoinListener;
 import net.whcuk.enforcedprogression.recipes.RecipeHandler;
 import net.whcuk.enforcedprogression.utils.Logging;
 
 @Mod(modid = Utils.MODID, version = Utils.VERSION, name = Utils.NAME)
 public class EnforcedProgression
 {
+	public static String TestString;
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event)
 	{
 		Logging.logInfo("Begin Loading...");
+		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+
+		config.load();
+
+		TestString = config.getString("Test", "Test Category", "This is a test", "");
+		// Configuration goes here.
+
+		config.save();
 		Register.doCreateItems();
 		Logging.logInfo("Finished Stage 1 Loading...");
 	}
@@ -33,6 +50,10 @@ public class EnforcedProgression
 	{
 		Logging.logInfo("Entering Main Loading Sequence");
 		RecipeHandler.RemoveVanillaRecipes();
+		
+		MinecraftForge.EVENT_BUS.register(new JoinListener());
+		FMLCommonHandler.instance().bus().register(new JoinListener());
+		
 		RecipeHandler.AddShapedRecipes();
 		RecipeHandler.AddShapelessRecipes();
 		Logging.logInfo("Finished Main Loading Sequence");
@@ -42,7 +63,7 @@ public class EnforcedProgression
 	public void postInit(FMLPostInitializationEvent event)
 	{
 		Logging.logInfo("Beginning Final Loading Sequence...");
-		//Stuff
+		// Stuff
 		Logging.logInfo("Finished Loading...");
 	}
 
