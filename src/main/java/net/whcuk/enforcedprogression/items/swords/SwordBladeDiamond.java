@@ -9,7 +9,7 @@ public class SwordBladeDiamond extends Item
 	public SwordBladeDiamond()
 	{
 		setUnlocalizedName(Utils.MODID + ".item11");
-		setTextureName(Utils.MODID + ":item11"");
+		setTextureName(Utils.MODID + ":item11");
 		setCreativeTab(EnforcedProgression.tabEnforcedProgression);
 	}
 }

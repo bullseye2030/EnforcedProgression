@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import scala.Int;
+import scala.util.control.Exception;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -21,36 +22,37 @@ import cpw.mods.fml.common.FMLLog;
 
 public class RecipeHandler
 {
-	public static void AddRecipeShaped(ItemStack result, Object[]...Args)
+	public static void AddRecipeShaped(ItemStack result, Object...Args)
 	{
-		GameRegistry.addRecipe(result, Args)
-		Logging.logInfo("Adding Recipe for " + result)
+			GameRegistry.addRecipe(result, Args);	
+			Logging.logDebug("Success in Adding EnforcedProgression Recipe for " + result.getDisplayName());
 	}
+
 	public static void AddShapedRecipes()
 	{
 		// Components
-		GameRegistry.addRecipe(new ItemStack(Register.ToolHandle), new Object[] { "  s", " s ", "s  ", 's', Items.stick });
-		GameRegistry.addRecipe(new ItemStack(Register.ToolHandleReinforced), new Object[] { " is", "isi", "si ", 's', Register.ToolHandle, 'i', Items.iron_ingot });
-		GameRegistry.addRecipe(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log }); // This is for oak, birch, spruce and jungle
-		GameRegistry.addRecipe(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log2 }); // And this is for acacia and dark oak...
-		GameRegistry.addRecipe(new ItemStack(Register.PickaxeHeadStone), new Object[] { " l ", "l l", "   ", 'l', Blocks.stone });
-		GameRegistry.addRecipe(new ItemStack(Register.PickaxeHeadIron), new Object[] { " l ", "l l", "   ", 'l', Items.iron_ingot });
-		GameRegistry.addRecipe(new ItemStack(Register.PickaxeHeadGold), new Object[] { " l ", "l l", "   ", 'l', Items.gold_ingot });
-		GameRegistry.addRecipe(new ItemStack(Register.PickaxeHeadDiamond), new Object[] { " l ", "l l", "   ", 'l', Items.diamond });
-		GameRegistry.addRecipe(new ItemStack(Register.Firebox), new Object[] { " c ", "c c", "cCc", 'c', Blocks.cobblestone, 'C', Items.coal});
-		GameRegistry.addRecipe(new ItemStack(Register.Firebox), new Object[] { " c ", "c c", "cCc", 'c', Blocks.cobblestone, 'C', new ItemStack(Items.coal, 1, 1)});
-		GameRegistry.addRecipe(new ItemStack(Register.FurnaceFrame), new Object[] { "ccc", "c c", "ccc", 'c', Blocks.cobblestone});
-		GameRegistry.addRecipe(new ItemStack(Register.SmeltingCompartment), new Object[] { "c c", "c c", " c ", 'c', Blocks.cobblestone});
+		AddRecipeShaped(new ItemStack(Register.ToolHandle), new Object[] { "  s", " s ", "s  ", 's', Items.stick });
+		AddRecipeShaped(new ItemStack(Register.ToolHandleReinforced), new Object[] { " is", "isi", "si ", 's', Register.ToolHandle, 'i', Items.iron_ingot });
+		AddRecipeShaped(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log }); // This is for oak, birch, spruce and jungle
+		AddRecipeShaped(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log2 }); // And this is for acacia and dark oak...
+		AddRecipeShaped(new ItemStack(Register.PickaxeHeadStone), new Object[] { " l ", "l l", "   ", 'l', Blocks.stone });
+		AddRecipeShaped(new ItemStack(Register.PickaxeHeadIron), new Object[] { " l ", "l l", "   ", 'l', Items.iron_ingot });
+		AddRecipeShaped(new ItemStack(Register.PickaxeHeadGold), new Object[] { " l ", "l l", "   ", 'l', Items.gold_ingot });
+		AddRecipeShaped(new ItemStack(Register.PickaxeHeadDiamond), new Object[] { " l ", "l l", "   ", 'l', Items.diamond });
+		AddRecipeShaped(new ItemStack(Register.Firebox), new Object[] { " c ", "c c", "cCc", 'c', Blocks.cobblestone, 'C', Items.coal });
+		AddRecipeShaped(new ItemStack(Register.Firebox), new Object[] { " c ", "c c", "cCc", 'c', Blocks.cobblestone, 'C', new ItemStack(Items.coal, 1, 1) });
+		AddRecipeShaped(new ItemStack(Register.FurnaceFrame), new Object[] { "ccc", "c c", "ccc", 'c', Blocks.cobblestone });
+		AddRecipeShaped(new ItemStack(Register.SmeltingCompartment), new Object[] { "c c", "c c", " c ", 'c', Blocks.cobblestone });
 
 		// Pickaxes
-		GameRegistry.addRecipe(new ItemStack(Items.wooden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadWood });
-		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadStone });
-		GameRegistry.addRecipe(new ItemStack(Items.golden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadGold });
-		GameRegistry.addRecipe(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
-		GameRegistry.addRecipe(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
-		
-		//Other
-		GameRegistry.addRecipe(new ItemStack(Blocks.furnace), new Object[] {"csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone});
+		AddRecipeShaped(new ItemStack(Items.wooden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadWood });
+		AddRecipeShaped(new ItemStack(Items.stone_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadStone });
+		AddRecipeShaped(new ItemStack(Items.golden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadGold });
+		AddRecipeShaped(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
+		AddRecipeShaped(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
+
+		// Other
+		AddRecipeShaped(new ItemStack(Blocks.furnace), new Object[] { "csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone });
 	}
 
 	public static void RemoveVanillaRecipes()
@@ -60,13 +62,13 @@ public class RecipeHandler
 		RemoveRecipe(new ItemStack(Items.iron_pickaxe)); // Remove the recipe for a iron pick
 		RemoveRecipe(new ItemStack(Items.golden_pickaxe)); // Remove the recipe for a gold pick
 		RemoveRecipe(new ItemStack(Items.diamond_pickaxe)); // Remove the recipe for a diamond pick
-		
+
 		RemoveRecipe(new ItemStack(Items.wooden_sword)); // Remove the recipe for a wooden sword
 		RemoveRecipe(new ItemStack(Items.stone_sword)); // Remove the recipe for a stone sword
 		RemoveRecipe(new ItemStack(Items.iron_sword)); // Remove the recipe for a iron sword
 		RemoveRecipe(new ItemStack(Items.golden_sword)); // Remove the recipe for a gold sword
 		RemoveRecipe(new ItemStack(Items.diamond_sword)); // Remove the recipe for a diamond sword
-		
+
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
 	}
 
