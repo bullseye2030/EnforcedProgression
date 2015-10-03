@@ -12,6 +12,6 @@ public class JoinListener
 	public void onLogin(PlayerLoggedInEvent event)
 	{
 		Logging.logInfo("Player " + event.player.getDisplayName() + " logged in!");
-		event.player.addChatComponentMessage(new ChatComponentText("String set to " + EnforcedProgression.TestString));
+		event.player.addChatComponentMessage(new ChatComponentText("You logged in!"));
 	}
 }

@@ -1,5 +1,7 @@
 package net.whcuk.enforcedprogression;
 
+import java.io.File;
+
 import cpw.mods.fml.common.FMLCommonHandler;
 // Forge Imports
 import cpw.mods.fml.common.Mod;
@@ -27,20 +29,26 @@ import net.whcuk.enforcedprogression.utils.Logging;
 @Mod(modid = Utils.MODID, version = Utils.VERSION, name = Utils.NAME)
 public class EnforcedProgression
 {
-	public static String TestString;
+	String ConfigDir;
+	public static Boolean modifyPicks;
+	public static Boolean modifySwords;
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event)
 	{
+		ConfigDir = event.getModConfigurationDirectory() + "/" + Utils.MODID; //My Mod's Config Directory
 		Logging.logInfo("Begin Loading...");
-		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
-
-		config.load();
-
-		TestString = config.getString("Test", "Test Category", "This is a test", "");
-		// Configuration goes here.
-
-		config.save();
+		
+		//Begin Config
+		Configuration featuresConfig = new Configuration(new File(ConfigDir , "features.cfg")); //
+		featuresConfig.load();
+		
+		modifyPicks = featuresConfig.getBoolean("modifyPicks", "Features", true, "Set to false to disable modified pickaxes");
+		modifySwords = featuresConfig.getBoolean("modifySwords", "Features", true, "Set to false to disable modified swords");
+		//TODO: More Config Stuff
+		
+		featuresConfig.save();
+		//End Config Stuff
 		Register.doCreateItems();
 		Logging.logInfo("Finished Stage 1 Loading...");
 	}
@@ -49,13 +57,13 @@ public class EnforcedProgression
 	public void init(FMLInitializationEvent event)
 	{
 		Logging.logInfo("Entering Main Loading Sequence");
-		RecipeHandler.RemoveVanillaRecipes();
-		
+		RecipeHandler.RemoveVanillaRecipes(); //Remove Certain Vanilla Recipes
+		//Event Listening Below
 		MinecraftForge.EVENT_BUS.register(new JoinListener());
 		FMLCommonHandler.instance().bus().register(new JoinListener());
-		
-		RecipeHandler.AddShapedRecipes();
-		RecipeHandler.AddShapelessRecipes();
+		//End Event Listening
+		RecipeHandler.AddShapedRecipes(); //Add my Shaped Recipes
+		RecipeHandler.AddShapelessRecipes(); //Add my Shapeless Recipes
 		Logging.logInfo("Finished Main Loading Sequence");
 	}
 
@@ -73,7 +81,7 @@ public class EnforcedProgression
 		@SideOnly(Side.CLIENT) // Only run on the client
 		public Item getTabIconItem() // Called to register the icon on the creative tab
 		{
-			return Register.ToolHandle; // Tell it to use a pickaxe handle.
+			return Register.PickaxeHeadDiamond; // Tell it to use a diamond pickaxe head.
 		}
 	};
 

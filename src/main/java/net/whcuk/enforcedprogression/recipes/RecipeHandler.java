@@ -17,6 +17,7 @@ import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.whcuk.enforcedprogression.EnforcedProgression;
 import net.whcuk.enforcedprogression.items.Register;
 import net.whcuk.enforcedprogression.utils.Logging;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -41,23 +42,42 @@ public class RecipeHandler
 		// Components
 		AddRecipeShaped(new ItemStack(Register.ToolHandle), new Object[] { "  s", " s ", "s  ", 's', Items.stick });
 		AddRecipeShaped(new ItemStack(Register.ToolHandleReinforced), new Object[] { " is", "isi", "si ", 's', Register.ToolHandle, 'i', Items.iron_ingot });
-		AddRecipeShaped(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log }); // This is for oak, birch, spruce and jungle
-		AddRecipeShaped(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log2 }); // And this is for acacia and dark oak...
-		AddRecipeShaped(new ItemStack(Register.PickaxeHeadStone), new Object[] { " l ", "l l", "   ", 'l', Blocks.stone });
-		AddRecipeShaped(new ItemStack(Register.PickaxeHeadIron), new Object[] { " l ", "l l", "   ", 'l', Items.iron_ingot });
-		AddRecipeShaped(new ItemStack(Register.PickaxeHeadGold), new Object[] { " l ", "l l", "   ", 'l', Items.gold_ingot });
-		AddRecipeShaped(new ItemStack(Register.PickaxeHeadDiamond), new Object[] { " l ", "l l", "   ", 'l', Items.diamond });
+		if (EnforcedProgression.modifyPicks)
+		{
+			AddRecipeShaped(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log }); // This is for oak, birch, spruce and jungle
+			AddRecipeShaped(new ItemStack(Register.PickaxeHeadWood), new Object[] { " l ", "l l", "   ", 'l', Blocks.log2 }); // And this is for acacia and dark oak...
+			AddRecipeShaped(new ItemStack(Register.PickaxeHeadStone), new Object[] { " l ", "l l", "   ", 'l', Blocks.stone });
+			AddRecipeShaped(new ItemStack(Register.PickaxeHeadIron), new Object[] { " l ", "l l", "   ", 'l', Items.iron_ingot });
+			AddRecipeShaped(new ItemStack(Register.PickaxeHeadGold), new Object[] { " l ", "l l", "   ", 'l', Items.gold_ingot });
+			AddRecipeShaped(new ItemStack(Register.PickaxeHeadDiamond), new Object[] { " l ", "l l", "   ", 'l', Items.diamond });
+		} else
+		{
+			Logging.logInfo("Not using Pickaxe Heads - modifyPicks is disabled!");
+		}
 		AddRecipeShaped(new ItemStack(Register.Firebox), new Object[] { " c ", "c c", "cCc", 'c', Blocks.cobblestone, 'C', Items.coal });
 		AddRecipeShaped(new ItemStack(Register.Firebox), new Object[] { " c ", "c c", "cCc", 'c', Blocks.cobblestone, 'C', new ItemStack(Items.coal, 1, 1) });
 		AddRecipeShaped(new ItemStack(Register.FurnaceFrame), new Object[] { "ccc", "c c", "ccc", 'c', Blocks.cobblestone });
 		AddRecipeShaped(new ItemStack(Register.SmeltingCompartment), new Object[] { "c c", "c c", " c ", 'c', Blocks.cobblestone });
 
 		// Pickaxes
-		AddRecipeShaped(new ItemStack(Items.wooden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadWood });
-		AddRecipeShaped(new ItemStack(Items.stone_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadStone });
-		AddRecipeShaped(new ItemStack(Items.golden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadGold });
-		AddRecipeShaped(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
-		AddRecipeShaped(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
+		if (EnforcedProgression.modifyPicks)
+		{
+			AddRecipeShaped(new ItemStack(Items.wooden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadWood });
+			AddRecipeShaped(new ItemStack(Items.stone_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandle, 'h', Register.PickaxeHeadStone });
+			AddRecipeShaped(new ItemStack(Items.golden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadGold });
+			AddRecipeShaped(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
+			AddRecipeShaped(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
+		}
+		
+		//Swords
+		if (EnforcedProgression.modifySwords)
+		{
+			AddRecipeShaped(new ItemStack(Items.wooden_sword), new Object[] { " b ", " s ", " s ", 's', Register.ToolHandle, 'b', Register.SwordBladeWood });
+			AddRecipeShaped(new ItemStack(Items.stone_sword), new Object[] { " b ", " s ", " s ", 's', Register.ToolHandle, 'b', Register.SwordBladeStone });
+			AddRecipeShaped(new ItemStack(Items.golden_sword), new Object[] { " b ", " s ", " s ", 's', Register.ToolHandleReinforced, 'b', Register.SwordBladeGold });
+			AddRecipeShaped(new ItemStack(Items.iron_sword), new Object[] { " b ", " s ", " s ", 's', Register.ToolHandleReinforced, 'b', Register.SwordBladeIron });
+			AddRecipeShaped(new ItemStack(Items.diamond_sword), new Object[] { " b ", " s ", " s ", 's', Register.ToolHandleReinforced, 'b', Register.SwordBladeDiamond });
+		}
 
 		// Saws
 		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log });
@@ -74,20 +94,20 @@ public class RecipeHandler
 		{
 			if (i < 4)
 			{
-				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); //For Oak, Birch, Spruce + Jungle
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); // For Oak, Birch, Spruce + Jungle
 			} else
 			{
-				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); //For Acacia + DarkOak
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 			}
 		}
 		for (int i = 0; i <= 5; i++)
 		{
 			if (i < 4)
 			{
-				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); //For Oak, Birch, Spruce + Jungle
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); // For Oak, Birch, Spruce + Jungle
 			} else
 			{
-				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); //For Acacia + DarkOak
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 			}
 		}
 		AddRecipeShapeless(new ItemStack(Items.stick, 2), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
@@ -95,17 +115,22 @@ public class RecipeHandler
 
 	public static void RemoveVanillaRecipes()
 	{
-		RemoveRecipe(new ItemStack(Items.wooden_pickaxe)); // Remove the recipe for a wooden pick
-		RemoveRecipe(new ItemStack(Items.stone_pickaxe)); // Remove the recipe for a stone pick
-		RemoveRecipe(new ItemStack(Items.iron_pickaxe)); // Remove the recipe for a iron pick
-		RemoveRecipe(new ItemStack(Items.golden_pickaxe)); // Remove the recipe for a gold pick
-		RemoveRecipe(new ItemStack(Items.diamond_pickaxe)); // Remove the recipe for a diamond pick
-
-		RemoveRecipe(new ItemStack(Items.wooden_sword)); // Remove the recipe for a wooden sword
-		RemoveRecipe(new ItemStack(Items.stone_sword)); // Remove the recipe for a stone sword
-		RemoveRecipe(new ItemStack(Items.iron_sword)); // Remove the recipe for a iron sword
-		RemoveRecipe(new ItemStack(Items.golden_sword)); // Remove the recipe for a gold sword
-		RemoveRecipe(new ItemStack(Items.diamond_sword)); // Remove the recipe for a diamond sword
+		if (EnforcedProgression.modifyPicks)
+		{
+			RemoveRecipe(new ItemStack(Items.wooden_pickaxe)); // Remove the recipe for a wooden pick
+			RemoveRecipe(new ItemStack(Items.stone_pickaxe)); // Remove the recipe for a stone pick
+			RemoveRecipe(new ItemStack(Items.iron_pickaxe)); // Remove the recipe for a iron pick
+			RemoveRecipe(new ItemStack(Items.golden_pickaxe)); // Remove the recipe for a gold pick
+			RemoveRecipe(new ItemStack(Items.diamond_pickaxe)); // Remove the recipe for a diamond pick
+		}
+		if (EnforcedProgression.modifySwords)
+		{
+			RemoveRecipe(new ItemStack(Items.wooden_sword)); // Remove the recipe for a wooden sword
+			RemoveRecipe(new ItemStack(Items.stone_sword)); // Remove the recipe for a stone sword
+			RemoveRecipe(new ItemStack(Items.iron_sword)); // Remove the recipe for a iron sword
+			RemoveRecipe(new ItemStack(Items.golden_sword)); // Remove the recipe for a gold sword
+			RemoveRecipe(new ItemStack(Items.diamond_sword)); // Remove the recipe for a diamond sword
+		}
 
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
 		RemoveRecipe(new ItemStack(Blocks.planks, 4));

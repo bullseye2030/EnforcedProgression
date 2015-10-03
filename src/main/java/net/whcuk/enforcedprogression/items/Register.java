@@ -3,10 +3,12 @@ package net.whcuk.enforcedprogression.items;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.whcuk.enforcedprogression.EnforcedProgression;
 import net.whcuk.enforcedprogression.items.furnace.*;
 import net.whcuk.enforcedprogression.items.pickaxe.*;
 import net.whcuk.enforcedprogression.items.saw.*;
 import net.whcuk.enforcedprogression.items.swords.*;
+import net.whcuk.enforcedprogression.utils.Logging;
 import net.whcuk.enforcedprogression.utils.Utils;
 
 public class Register
@@ -29,7 +31,6 @@ public class Register
 	public static Item SwordBladeDiamond;
 	public static Item SawMakeshift;
 	public static Item SawWood;
-	
 
 	public static void doCreateItems()
 	{
@@ -48,8 +49,8 @@ public class Register
 		SwordBladeIron = new SwordBladeIron();
 		SwordBladeGold = new SwordBladeGold();
 		SwordBladeDiamond = new SwordBladeDiamond();
-		SawMakeshift= new Makeshift();
-		SawWood= new Wood();
+		SawMakeshift = new Makeshift();
+		SawWood = new Wood();
 
 		GameRegistry.registerItem(ToolHandle, "item1");
 		GameRegistry.registerItem(PickaxeHeadWood, "item2");

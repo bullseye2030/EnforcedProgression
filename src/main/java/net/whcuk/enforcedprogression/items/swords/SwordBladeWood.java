@@ -8,8 +8,8 @@ public class SwordBladeWood extends Item
 {
 	public SwordBladeWood()
 	{
-		setUnlocalizedName(Utils.MODID + ".item15");
-		setTextureName(Utils.MODID + ":item15");
+		setUnlocalizedName(Utils.MODID + ".item11");
+		setTextureName(Utils.MODID + ":item11");
 		setCreativeTab(EnforcedProgression.tabEnforcedProgression);
 	}
 }

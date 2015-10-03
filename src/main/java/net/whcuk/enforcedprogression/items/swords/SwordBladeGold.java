@@ -8,8 +8,8 @@ public class SwordBladeGold extends Item
 {
 	public SwordBladeGold()
 	{
-		setUnlocalizedName(Utils.MODID + ".item12");
-		setTextureName(Utils.MODID + ":item12");
+		setUnlocalizedName(Utils.MODID + ".item14");
+		setTextureName(Utils.MODID + ":item14");
 		setCreativeTab(EnforcedProgression.tabEnforcedProgression);
 	}
 }

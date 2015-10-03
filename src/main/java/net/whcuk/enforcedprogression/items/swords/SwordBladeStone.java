@@ -8,8 +8,8 @@ public class SwordBladeStone extends Item
 {
 	public SwordBladeStone()
 	{
-		setUnlocalizedName(Utils.MODID + ".item14");
-		setTextureName(Utils.MODID + ":item14");
+		setUnlocalizedName(Utils.MODID + ".item12");
+		setTextureName(Utils.MODID + ":item12");
 		setCreativeTab(EnforcedProgression.tabEnforcedProgression);
 	}
 }
