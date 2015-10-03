@@ -32,6 +32,7 @@ public class EnforcedProgression
 	String ConfigDir;
 	public static Boolean modifyPicks;
 	public static Boolean modifySwords;
+	public static Boolean modifyWood;
 
 	@EventHandler
 	public void preinit(FMLPreInitializationEvent event)
@@ -45,6 +46,7 @@ public class EnforcedProgression
 		
 		modifyPicks = featuresConfig.getBoolean("modifyPicks", "Features", true, "Set to false to disable modified pickaxes");
 		modifySwords = featuresConfig.getBoolean("modifySwords", "Features", true, "Set to false to disable modified swords");
+		modifyWood = featuresConfig.getBoolean("modifyWood", "Features", true, "Set to false to disable modifying wooden blocks");
 		//TODO: More Config Stuff
 		
 		featuresConfig.save();
