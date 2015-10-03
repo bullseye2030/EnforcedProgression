@@ -90,6 +90,7 @@ public class RecipeHandler
 
 	public static void AddShapelessRecipes()
 	{
+		//Sawing - Makeshift
 		for (int i = 0; i <= 5; i++)
 		{
 			if (i < 4)
@@ -100,6 +101,7 @@ public class RecipeHandler
 				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 			}
 		}
+		//Sawing - Wood
 		for (int i = 0; i <= 5; i++)
 		{
 			if (i < 4)
@@ -110,7 +112,9 @@ public class RecipeHandler
 				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 			}
 		}
+		//Sticks
 		AddRecipeShapeless(new ItemStack(Items.stick, 2), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
+		AddRecipeShapeless(new ItemStack(Items.stick, 3), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 	}
 
 	public static void RemoveVanillaRecipes()
