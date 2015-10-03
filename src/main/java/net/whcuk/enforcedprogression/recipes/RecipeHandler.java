@@ -68,8 +68,8 @@ public class RecipeHandler
 			AddRecipeShaped(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
 			AddRecipeShaped(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
 		}
-		
-		//Swords
+
+		// Swords
 		if (EnforcedProgression.modifySwords)
 		{
 			AddRecipeShaped(new ItemStack(Items.wooden_sword), new Object[] { " b ", " s ", " s ", 's', Register.ToolHandle, 'b', Register.SwordBladeWood });
@@ -82,7 +82,7 @@ public class RecipeHandler
 		// Saws
 		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log });
 		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2 }); // For Acacia + DarkOak
-		AddRecipeShaped(new ItemStack(Register.SawWood), new Object[] { "ppp", "psp", "   ", 'p', Blocks.planks, 's', Items.stick });
+		AddRecipeShaped(new ItemStack(Register.SawWood), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Items.stick });
 
 		// Other
 		AddRecipeShaped(new ItemStack(Blocks.furnace), new Object[] { "csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone });
@@ -90,7 +90,7 @@ public class RecipeHandler
 
 	public static void AddShapelessRecipes()
 	{
-		//Sawing - Makeshift
+		// Sawing - Makeshift
 		for (int i = 0; i <= 5; i++)
 		{
 			if (i < 4)
@@ -101,7 +101,7 @@ public class RecipeHandler
 				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 			}
 		}
-		//Sawing - Wood
+		// Sawing - Wood
 		for (int i = 0; i <= 5; i++)
 		{
 			if (i < 4)
@@ -112,7 +112,7 @@ public class RecipeHandler
 				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 			}
 		}
-		//Sticks
+		// Sticks
 		AddRecipeShapeless(new ItemStack(Items.stick, 2), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 		AddRecipeShapeless(new ItemStack(Items.stick, 3), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 	}
@@ -137,12 +137,11 @@ public class RecipeHandler
 		}
 
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
-		RemoveRecipe(new ItemStack(Blocks.planks, 4));
-		RemoveRecipe(new ItemStack(Blocks.planks, 4, 1));
-		RemoveRecipe(new ItemStack(Blocks.planks, 4, 2));
-		RemoveRecipe(new ItemStack(Blocks.planks, 4, 3));
-		RemoveRecipe(new ItemStack(Blocks.planks, 4, 4));
-		RemoveRecipe(new ItemStack(Blocks.planks, 4, 5));
+		
+		for (int i = 0; i <= 5; i++) //Remove recipe for planks
+		{
+			RemoveRecipe(new ItemStack(Blocks.planks, 4, i)); //...z
+		}
 	}
 
 	private static void RemoveRecipe(ItemStack resultItem)
