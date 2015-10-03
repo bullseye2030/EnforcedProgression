@@ -10,8 +10,8 @@ public class Iron extends Item
 	public Iron()
 	{
 		super();
-		setUnlocalizedName(Utils.MODID + ".item22");
-		setTextureName(Utils.MODID + ":item22");
+		setUnlocalizedName(Utils.MODID + ".item20");
+		setTextureName(Utils.MODID + ":item20");
 		setCreativeTab(EnforcedProgression.tabEnforcedProgression);
 		maxStackSize = 1; //Sets the max stack size
 		setMaxDamage(120 - 1); //Sets the Damage this can take
