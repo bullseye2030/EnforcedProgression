@@ -37,6 +37,8 @@ public class Register
 	public static Item StickIron;
 	public static Item SawGold;
 	public static Item StickGold;
+	public static Item SawDiamond;
+	public static Item StickDiamond;
 
 	public static void doCreateItems()
 	{
@@ -63,6 +65,8 @@ public class Register
 		StickIron = new IronStick();
 		SawGold= new Gold();
 		StickGold = new GoldStick();
+		SawDiamond= new Diamond();
+		StickDiamond = new DiamondStick();
 
 		GameRegistry.registerItem(ToolHandle, "item1");
 		GameRegistry.registerItem(PickaxeHeadWood, "item2");
@@ -87,6 +91,8 @@ public class Register
 		GameRegistry.registerItem(StickIron, "item21");
 		GameRegistry.registerItem(SawGold, "item22");
 		GameRegistry.registerItem(StickGold, "item23");
+		GameRegistry.registerItem(SawDiamond, "item24");
+		GameRegistry.registerItem(StickDiamond, "item25");
 	}
 
 }

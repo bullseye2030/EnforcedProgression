@@ -111,6 +111,9 @@ public class RecipeHandler
 			
 			AddRecipeShaped(new ItemStack(Register.StickGold), new Object[] { "isi", "isi", "   ", 's', Register.StickIron, 'i', Items.gold_ingot });
 			AddRecipeShaped(new ItemStack(Register.SawGold), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickGold});
+			
+			AddRecipeShaped(new ItemStack(Register.StickDiamond), new Object[] { "isi", "isi", "   ", 's', Register.StickIron, 'i', Items.diamond});
+			AddRecipeShaped(new ItemStack(Register.SawDiamond), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickDiamond});
 			// Crafting Tables
 			AddRecipeShaped(new ItemStack(Blocks.crafting_table), new Object[] { "ll ", "ll ", "   ", 'l', Blocks.log });
 			AddRecipeShaped(new ItemStack(Blocks.crafting_table), new Object[] { "ll ", "ll ", "   ", 'l', Blocks.log2 });
@@ -182,12 +185,24 @@ public class RecipeHandler
 					AddRecipeShapeless(new ItemStack(Blocks.planks, 5, i), new Object[] { new ItemStack(Register.SawGold, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
 				}
 			}
+			// Sawing - Diamond
+			for (int i = 0; i <= 5; i++)
+			{
+				if (i < 4)
+				{
+					AddRecipeShapeless(new ItemStack(Blocks.planks, 6, i), new Object[] { new ItemStack(Register.SawDiamond, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); // For Oak, Birch, Spruce + Jungle
+				} else
+				{
+					AddRecipeShapeless(new ItemStack(Blocks.planks, 6, i), new Object[] { new ItemStack(Register.SawDiamond, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); // For Acacia + DarkOak
+				}
+			}
 			// Sticks
 			AddRecipeShapeless(new ItemStack(Items.stick, 2), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 			AddRecipeShapeless(new ItemStack(Items.stick, 3), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 			AddRecipeShapeless(new ItemStack(Items.stick, 4), new Object[] { new ItemStack(Register.SawStone, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 			AddRecipeShapeless(new ItemStack(Items.stick, 5), new Object[] { new ItemStack(Register.SawIron, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 			AddRecipeShapeless(new ItemStack(Items.stick, 6), new Object[] { new ItemStack(Register.SawGold, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
+			AddRecipeShapeless(new ItemStack(Items.stick, 7), new Object[] { new ItemStack(Register.SawDiamond, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 		}
 	}
 
