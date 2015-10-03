@@ -58,6 +58,10 @@ public class RecipeHandler
 		AddRecipeShaped(new ItemStack(Items.golden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadGold });
 		AddRecipeShaped(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
 		AddRecipeShaped(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
+		
+		//Saws
+		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log});
+		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2});
 
 		// Other
 		AddRecipeShaped(new ItemStack(Blocks.furnace), new Object[] { "csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone });
