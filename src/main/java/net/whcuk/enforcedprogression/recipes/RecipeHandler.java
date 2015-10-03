@@ -58,10 +58,11 @@ public class RecipeHandler
 		AddRecipeShaped(new ItemStack(Items.golden_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadGold });
 		AddRecipeShaped(new ItemStack(Items.iron_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadIron });
 		AddRecipeShaped(new ItemStack(Items.diamond_pickaxe), new Object[] { " h ", " s ", " s ", 's', Register.ToolHandleReinforced, 'h', Register.PickaxeHeadDiamond });
-		
-		//Saws
-		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log});
-		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2}); //For Acacia + DarkOak
+
+		// Saws
+		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log });
+		AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2 }); // For Acacia + DarkOak
+		AddRecipeShaped(new ItemStack(Register.SawWood), new Object[] { "ppp", "psp", "   ", 'p', Blocks.planks, 's', Items.stick });
 
 		// Other
 		AddRecipeShaped(new ItemStack(Blocks.furnace), new Object[] { "csc", "cfc", "cFc", 's', Register.SmeltingCompartment, 'f', Register.FurnaceFrame, 'F', Register.Firebox, 'c', Blocks.cobblestone });
@@ -69,12 +70,27 @@ public class RecipeHandler
 
 	public static void AddShapelessRecipes()
 	{
-		AddRecipeShapeless(new ItemStack(Blocks.planks,1,0), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,0)});
-		AddRecipeShapeless(new ItemStack(Blocks.planks,1,1), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,1)});
-		AddRecipeShapeless(new ItemStack(Blocks.planks,1,2), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,2)});
-		AddRecipeShapeless(new ItemStack(Blocks.planks,1,3), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log,1,3)});
-		AddRecipeShapeless(new ItemStack(Blocks.planks,1,4), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2,1,0)});
-		AddRecipeShapeless(new ItemStack(Blocks.planks,1,5), new Object[]{new ItemStack(Register.SawMakeshift,1,OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2,1,1)});
+		for (int i = 0; i <= 5; i++)
+		{
+			if (i < 4)
+			{
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); //For Oak, Birch, Spruce + Jungle
+			} else
+			{
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 1, i), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); //For Acacia + DarkOak
+			}
+		}
+		for (int i = 0; i <= 5; i++)
+		{
+			if (i < 4)
+			{
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log, 1, i) }); //For Oak, Birch, Spruce + Jungle
+			} else
+			{
+				AddRecipeShapeless(new ItemStack(Blocks.planks, 2, i), new Object[] { new ItemStack(Register.SawWood, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.log2, 1, i - 4) }); //For Acacia + DarkOak
+			}
+		}
+		AddRecipeShapeless(new ItemStack(Items.stick, 2), new Object[] { new ItemStack(Register.SawMakeshift, 1, OreDictionary.WILDCARD_VALUE), new ItemStack(Blocks.planks, 1, OreDictionary.WILDCARD_VALUE) });
 	}
 
 	public static void RemoveVanillaRecipes()
@@ -92,12 +108,12 @@ public class RecipeHandler
 		RemoveRecipe(new ItemStack(Items.diamond_sword)); // Remove the recipe for a diamond sword
 
 		RemoveRecipe(new ItemStack(Blocks.furnace)); // Remove the recipe for a furnace
-		RemoveRecipe(new ItemStack(Blocks.planks,4));
-		RemoveRecipe(new ItemStack(Blocks.planks,4,1));
-		RemoveRecipe(new ItemStack(Blocks.planks,4,2));
-		RemoveRecipe(new ItemStack(Blocks.planks,4,3));
-		RemoveRecipe(new ItemStack(Blocks.planks,4,4));
-		RemoveRecipe(new ItemStack(Blocks.planks,4,5));
+		RemoveRecipe(new ItemStack(Blocks.planks, 4));
+		RemoveRecipe(new ItemStack(Blocks.planks, 4, 1));
+		RemoveRecipe(new ItemStack(Blocks.planks, 4, 2));
+		RemoveRecipe(new ItemStack(Blocks.planks, 4, 3));
+		RemoveRecipe(new ItemStack(Blocks.planks, 4, 4));
+		RemoveRecipe(new ItemStack(Blocks.planks, 4, 5));
 	}
 
 	private static void RemoveRecipe(ItemStack resultItem)
