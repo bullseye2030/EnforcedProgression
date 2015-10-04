@@ -68,6 +68,7 @@ public class EnforcedProgression
 		// End Event Listening
 		RecipeHandler.AddShapedRecipes(); // Add my Shaped Recipes
 		RecipeHandler.AddShapelessRecipes(); // Add my Shapeless Recipes
+		RecipeHandler.AddSawmillRecipes(); // Add my Sawmill Recipes
 
 		GameRegistry.registerTileEntity(TileEntitySawmill.class, "TestGUI");
 		Logging.logInfo("Finished Main Loading Sequence");

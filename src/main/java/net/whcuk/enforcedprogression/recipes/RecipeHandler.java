@@ -1,17 +1,13 @@
 package net.whcuk.enforcedprogression.recipes;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
-import scala.Int;
-import scala.util.control.Exception;
-import net.minecraft.block.Block;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraft.item.crafting.RecipesTools;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraftforge.oredict.OreDictionary;
@@ -19,9 +15,8 @@ import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import net.whcuk.enforcedprogression.EnforcedProgression;
 import net.whcuk.enforcedprogression.items.Register;
+import net.whcuk.enforcedprogression.tileentity.TileEntitySawmill;
 import net.whcuk.enforcedprogression.utils.Logging;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.FMLLog;
 
 public class RecipeHandler
 {
@@ -35,6 +30,17 @@ public class RecipeHandler
 	{
 		GameRegistry.addShapelessRecipe(result, Args);
 		Logging.logDebug("Success in Adding Shapeless EnforcedProgression Recipe for " + result.getDisplayName());
+	}
+
+	public static void AddSawmillRecipe(ItemStack result, ItemStack input)
+	{
+		TileEntitySawmill.addRecipe(input, result);
+		Logging.logDebug("Success in Adding EnforcedProgression Sawmill Recipe for " + result.getDisplayName());
+	}
+
+	public static void AddSawmillRecipes()
+	{
+		AddSawmillRecipe(new ItemStack(Blocks.planks, 8), new ItemStack(Blocks.log));
 	}
 
 	public static void AddShapedRecipes()
@@ -100,20 +106,20 @@ public class RecipeHandler
 			// Saws
 			AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log });
 			AddRecipeShaped(new ItemStack(Register.SawMakeshift), new Object[] { "lll", "   ", "   ", 'l', Blocks.log2 }); // For Acacia + DarkOak
-			
+
 			AddRecipeShaped(new ItemStack(Register.SawWood), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Items.stick });
-			
+
 			AddRecipeShaped(new ItemStack(Register.StickStone), new Object[] { "s  ", "s  ", "   ", 's', Blocks.cobblestone });
 			AddRecipeShaped(new ItemStack(Register.SawStone), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickStone });
-			
+
 			AddRecipeShaped(new ItemStack(Register.StickIron), new Object[] { "isi", "isi", "   ", 's', Register.StickStone, 'i', Items.iron_ingot });
 			AddRecipeShaped(new ItemStack(Register.SawIron), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickIron });
-			
+
 			AddRecipeShaped(new ItemStack(Register.StickGold), new Object[] { "isi", "isi", "   ", 's', Register.StickIron, 'i', Items.gold_ingot });
-			AddRecipeShaped(new ItemStack(Register.SawGold), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickGold});
-			
-			AddRecipeShaped(new ItemStack(Register.StickDiamond), new Object[] { "isi", "isi", "   ", 's', Register.StickIron, 'i', Items.diamond});
-			AddRecipeShaped(new ItemStack(Register.SawDiamond), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickDiamond});
+			AddRecipeShaped(new ItemStack(Register.SawGold), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickGold });
+
+			AddRecipeShaped(new ItemStack(Register.StickDiamond), new Object[] { "isi", "isi", "   ", 's', Register.StickIron, 'i', Items.diamond });
+			AddRecipeShaped(new ItemStack(Register.SawDiamond), new Object[] { "ppp", "ssp", "   ", 'p', Blocks.planks, 's', Register.StickDiamond });
 			// Crafting Tables
 			AddRecipeShaped(new ItemStack(Blocks.crafting_table), new Object[] { "ll ", "ll ", "   ", 'l', Blocks.log });
 			AddRecipeShaped(new ItemStack(Blocks.crafting_table), new Object[] { "ll ", "ll ", "   ", 'l', Blocks.log2 });

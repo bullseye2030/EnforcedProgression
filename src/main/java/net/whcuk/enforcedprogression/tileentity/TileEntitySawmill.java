@@ -15,15 +15,14 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 {
 	private ItemStack[] inv;
 
-	public ArrayList<ArrayList<ItemStack>> recipeList;
+	public static ArrayList<ArrayList<ItemStack>> recipeList = new ArrayList<ArrayList<ItemStack>>(); // That's complex, isn't it :D
 
-	public ArrayList addRecipe(ItemStack input, ItemStack output)
+	public static void addRecipe(ItemStack input, ItemStack output)
 	{
 		ArrayList<ItemStack> tmpArray = new ArrayList<ItemStack>();
 		tmpArray.add(input);
 		tmpArray.add(output);
 		recipeList.add(tmpArray);
-		return recipeList;
 	}
 
 	public TileEntitySawmill()
@@ -179,26 +178,26 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 	public void updateEntity()
 	{
 		// Called once per tick (20 times/sec)
-		// Begin *BAD* Pseudocode for recipes
 
-		// Array of Arrays. Check
-		// Each array has 2 ItemStacks, input and output. Check
-		// in updateEntity():
-		// for int i = 0; i<array.length;i++
-		// if (itemInSlot1 = bigArray[i][0]
-		// *Arrow Rendering Code*?
-		// itemInSlot1 = null
-		// itemInSlot2 = bigArray[i][1]
-		// SHOULD work (but nothing ever does :D)
+		// TODO: *Arrow Rendering Code*?
 
 		for (int i = 0; i < recipeList.size(); i++)
 		{
 			ArrayList<ItemStack> tmpArray = recipeList.get(i);
 			IInventory inventory = this;
-			if (inventory.getStackInSlot(1) == tmpArray.get(0))
+			// if (!(inventory.getStackInSlot(0) == null))
+			// {
+			// System.out.println("Inventory Slot 1 is " + inventory.getStackInSlot(1).getDisplayName());
+			// } else
+			// {
+			// System.out.println("Inventory Slot 1 is nothing");
+			// }
+			System.out.println(inventory.getStackInSlot(0));
+			if (inventory.getStackInSlot(0) == tmpArray.get(0)) // && inventory.getStackInSlot(1) == null)
 			{
-				inventory.setInventorySlotContents(1, null);
-				inventory.setInventorySlotContents(2, tmpArray.get(1));
+
+				inventory.setInventorySlotContents(0, null);
+				inventory.setInventorySlotContents(1, tmpArray.get(1));
 			}
 		}
 
