@@ -17,8 +17,8 @@ public class ContainerSawmill extends Container
 
 		// the Slot constructor takes the IInventory and the slot number in that it binds to
 		// and the x-y coordinates it resides on-screen
-		addSlotToContainer(new Slot(te, 0, 5, 5));
-		addSlotToContainer(new Slot(te, 1, 20, 20));
+		addSlotToContainer(new Slot(te, 0, 56, 35));
+		addSlotToContainer(new Slot(te, 1, 116, 35));
 
 		// vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);

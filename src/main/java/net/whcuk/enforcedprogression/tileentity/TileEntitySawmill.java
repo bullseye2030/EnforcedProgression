@@ -15,7 +15,7 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 {
 	private ItemStack[] inv;
 
-	ArrayList<ArrayList<ItemStack>> recipeList;
+	public ArrayList<ArrayList<ItemStack>> recipeList;
 
 	public ArrayList addRecipe(ItemStack input, ItemStack output)
 	{
@@ -40,7 +40,6 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 	@Override
 	public ItemStack getStackInSlot(int p_70301_1_)
 	{
-		System.out.print(Thread.currentThread().getStackTrace());
 		return inv[p_70301_1_];
 	}
 
@@ -182,8 +181,8 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 		// Called once per tick (20 times/sec)
 		// Begin *BAD* Pseudocode for recipes
 
-		// Array of Arrays.
-		// Each array has 2 ItemStacks, input and output.
+		// Array of Arrays. Check
+		// Each array has 2 ItemStacks, input and output. Check
 		// in updateEntity():
 		// for int i = 0; i<array.length;i++
 		// if (itemInSlot1 = bigArray[i][0]
@@ -191,6 +190,17 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 		// itemInSlot1 = null
 		// itemInSlot2 = bigArray[i][1]
 		// SHOULD work (but nothing ever does :D)
+
+		for (int i = 0; i < recipeList.size(); i++)
+		{
+			ArrayList<ItemStack> tmpArray = recipeList.get(i);
+			IInventory inventory = this;
+			if (inventory.getStackInSlot(1) == tmpArray.get(0))
+			{
+				inventory.setInventorySlotContents(1, null);
+				inventory.setInventorySlotContents(2, tmpArray.get(1));
+			}
+		}
 
 	}
 
