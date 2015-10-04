@@ -3,13 +3,30 @@ package net.whcuk.enforcedprogression.items;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.whcuk.enforcedprogression.EnforcedProgression;
-import net.whcuk.enforcedprogression.items.furnace.*;
-import net.whcuk.enforcedprogression.items.pickaxe.*;
-import net.whcuk.enforcedprogression.items.saw.*;
-import net.whcuk.enforcedprogression.items.swords.*;
-import net.whcuk.enforcedprogression.utils.Logging;
-import net.whcuk.enforcedprogression.utils.Utils;
+import net.whcuk.enforcedprogression.blocks.TestGui;
+import net.whcuk.enforcedprogression.items.furnace.FireBox;
+import net.whcuk.enforcedprogression.items.furnace.FurnaceFrame;
+import net.whcuk.enforcedprogression.items.furnace.SmeltingCompartment;
+import net.whcuk.enforcedprogression.items.pickaxe.PickaxeHeadDiamond;
+import net.whcuk.enforcedprogression.items.pickaxe.PickaxeHeadGold;
+import net.whcuk.enforcedprogression.items.pickaxe.PickaxeHeadIron;
+import net.whcuk.enforcedprogression.items.pickaxe.PickaxeHeadStone;
+import net.whcuk.enforcedprogression.items.pickaxe.PickaxeHeadWood;
+import net.whcuk.enforcedprogression.items.saw.Diamond;
+import net.whcuk.enforcedprogression.items.saw.DiamondStick;
+import net.whcuk.enforcedprogression.items.saw.Gold;
+import net.whcuk.enforcedprogression.items.saw.GoldStick;
+import net.whcuk.enforcedprogression.items.saw.Iron;
+import net.whcuk.enforcedprogression.items.saw.IronStick;
+import net.whcuk.enforcedprogression.items.saw.Makeshift;
+import net.whcuk.enforcedprogression.items.saw.Stone;
+import net.whcuk.enforcedprogression.items.saw.StoneStick;
+import net.whcuk.enforcedprogression.items.saw.Wood;
+import net.whcuk.enforcedprogression.items.swords.SwordBladeDiamond;
+import net.whcuk.enforcedprogression.items.swords.SwordBladeGold;
+import net.whcuk.enforcedprogression.items.swords.SwordBladeIron;
+import net.whcuk.enforcedprogression.items.swords.SwordBladeStone;
+import net.whcuk.enforcedprogression.items.swords.SwordBladeWood;
 
 public class Register
 {
@@ -40,6 +57,8 @@ public class Register
 	public static Item SawDiamond;
 	public static Item StickDiamond;
 
+	public static Block TestGUI;
+
 	public static void doCreateItems()
 	{
 		ToolHandle = new ToolHandle();
@@ -63,10 +82,12 @@ public class Register
 		StickStone = new StoneStick();
 		SawIron = new Iron();
 		StickIron = new IronStick();
-		SawGold= new Gold();
+		SawGold = new Gold();
 		StickGold = new GoldStick();
-		SawDiamond= new Diamond();
+		SawDiamond = new Diamond();
 		StickDiamond = new DiamondStick();
+
+		TestGUI = new TestGui();
 
 		GameRegistry.registerItem(ToolHandle, "item1");
 		GameRegistry.registerItem(PickaxeHeadWood, "item2");
@@ -93,6 +114,8 @@ public class Register
 		GameRegistry.registerItem(StickGold, "item23");
 		GameRegistry.registerItem(SawDiamond, "item24");
 		GameRegistry.registerItem(StickDiamond, "item25");
+
+		GameRegistry.registerBlock(TestGUI, "block1");
 	}
 
 }
