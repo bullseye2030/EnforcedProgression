@@ -1,5 +1,7 @@
 package net.whcuk.enforcedprogression.tileentity;
 
+import java.util.ArrayList;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -9,13 +11,24 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityTestGUI extends TileEntity implements IInventory
+public class TileEntitySawmill extends TileEntity implements IInventory
 {
 	private ItemStack[] inv;
 
-	public TileEntityTestGUI()
+	ArrayList<ArrayList<ItemStack>> recipeList;
+
+	public ArrayList addRecipe(ItemStack input, ItemStack output)
 	{
-		inv = new ItemStack[9];
+		ArrayList<ItemStack> tmpArray = new ArrayList<ItemStack>();
+		tmpArray.add(input);
+		tmpArray.add(output);
+		recipeList.add(tmpArray);
+		return recipeList;
+	}
+
+	public TileEntitySawmill()
+	{
+		inv = new ItemStack[2];
 	}
 
 	@Override
@@ -27,12 +40,14 @@ public class TileEntityTestGUI extends TileEntity implements IInventory
 	@Override
 	public ItemStack getStackInSlot(int p_70301_1_)
 	{
+		System.out.print(Thread.currentThread().getStackTrace());
 		return inv[p_70301_1_];
 	}
 
 	@Override
 	public ItemStack decrStackSize(int slot, int amt)
 	{
+		System.out.println("Slot=" + String.format("%d", slot));
 		ItemStack stack = getStackInSlot(slot);
 		if (stack != null)
 		{
@@ -159,6 +174,24 @@ public class TileEntityTestGUI extends TileEntity implements IInventory
 			}
 		}
 		tagCompound.setTag("Inventory", itemList);
+	}
+
+	@Override
+	public void updateEntity()
+	{
+		// Called once per tick (20 times/sec)
+		// Begin *BAD* Pseudocode for recipes
+
+		// Array of Arrays.
+		// Each array has 2 ItemStacks, input and output.
+		// in updateEntity():
+		// for int i = 0; i<array.length;i++
+		// if (itemInSlot1 = bigArray[i][0]
+		// *Arrow Rendering Code*?
+		// itemInSlot1 = null
+		// itemInSlot2 = bigArray[i][1]
+		// SHOULD work (but nothing ever does :D)
+
 	}
 
 }

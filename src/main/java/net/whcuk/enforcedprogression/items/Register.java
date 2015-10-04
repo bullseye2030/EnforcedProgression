@@ -3,7 +3,7 @@ package net.whcuk.enforcedprogression.items;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import net.whcuk.enforcedprogression.blocks.TestGui;
+import net.whcuk.enforcedprogression.blocks.Sawmill;
 import net.whcuk.enforcedprogression.items.furnace.FireBox;
 import net.whcuk.enforcedprogression.items.furnace.FurnaceFrame;
 import net.whcuk.enforcedprogression.items.furnace.SmeltingCompartment;
@@ -87,7 +87,7 @@ public class Register
 		SawDiamond = new Diamond();
 		StickDiamond = new DiamondStick();
 
-		TestGUI = new TestGui();
+		TestGUI = new Sawmill();
 
 		GameRegistry.registerItem(ToolHandle, "item1");
 		GameRegistry.registerItem(PickaxeHeadWood, "item2");

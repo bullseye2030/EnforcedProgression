@@ -22,7 +22,7 @@ import net.whcuk.enforcedprogression.gui.GUIHandler;
 import net.whcuk.enforcedprogression.items.Register;
 import net.whcuk.enforcedprogression.listener.JoinListener;
 import net.whcuk.enforcedprogression.recipes.RecipeHandler;
-import net.whcuk.enforcedprogression.tileentity.TileEntityTestGUI;
+import net.whcuk.enforcedprogression.tileentity.TileEntitySawmill;
 import net.whcuk.enforcedprogression.utils.Logging;
 // My Imports
 import net.whcuk.enforcedprogression.utils.Utils;
@@ -69,7 +69,7 @@ public class EnforcedProgression
 		RecipeHandler.AddShapedRecipes(); // Add my Shaped Recipes
 		RecipeHandler.AddShapelessRecipes(); // Add my Shapeless Recipes
 
-		GameRegistry.registerTileEntity(TileEntityTestGUI.class, "TestGUI");
+		GameRegistry.registerTileEntity(TileEntitySawmill.class, "TestGUI");
 		Logging.logInfo("Finished Main Loading Sequence");
 	}
 

@@ -13,13 +13,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import net.whcuk.enforcedprogression.EnforcedProgression;
-import net.whcuk.enforcedprogression.tileentity.TileEntityTestGUI;
+import net.whcuk.enforcedprogression.tileentity.TileEntitySawmill;
 import net.whcuk.enforcedprogression.utils.Utils;
 
-public class TestGui extends BlockContainer
+public class Sawmill extends BlockContainer
 {
 
-	public TestGui()
+	public Sawmill()
 	{
 		super(Material.rock);
 		setBlockName(Utils.MODID + "blockTestGui");
@@ -32,7 +32,7 @@ public class TestGui extends BlockContainer
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_)
 	{
-		return new TileEntityTestGUI();
+		return new TileEntitySawmill();
 	}
 
 	@Override

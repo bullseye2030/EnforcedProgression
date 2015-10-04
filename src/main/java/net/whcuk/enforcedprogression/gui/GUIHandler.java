@@ -4,8 +4,8 @@ import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
-import net.whcuk.enforcedprogression.container.ContainerTestGUI;
-import net.whcuk.enforcedprogression.tileentity.TileEntityTestGUI;
+import net.whcuk.enforcedprogression.container.ContainerSawmill;
+import net.whcuk.enforcedprogression.tileentity.TileEntitySawmill;
 
 public class GUIHandler implements IGuiHandler
 {
@@ -14,9 +14,9 @@ public class GUIHandler implements IGuiHandler
 	public Object getServerGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
-		if (tileEntity instanceof TileEntityTestGUI)
+		if (tileEntity instanceof TileEntitySawmill)
 		{
-			return new ContainerTestGUI(player.inventory, (TileEntityTestGUI) tileEntity);
+			return new ContainerSawmill(player.inventory, (TileEntitySawmill) tileEntity);
 		}
 		return null;
 	}
@@ -26,9 +26,9 @@ public class GUIHandler implements IGuiHandler
 	public Object getClientGuiElement(int id, EntityPlayer player, World world, int x, int y, int z)
 	{
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
-		if (tileEntity instanceof TileEntityTestGUI)
+		if (tileEntity instanceof TileEntitySawmill)
 		{
-			return new TestGUI(player.inventory, (TileEntityTestGUI) tileEntity);
+			return new GUISawmill(player.inventory, (TileEntitySawmill) tileEntity);
 		}
 		return null;
 

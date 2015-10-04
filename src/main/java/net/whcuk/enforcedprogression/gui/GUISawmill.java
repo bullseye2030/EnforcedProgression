@@ -4,20 +4,19 @@ import org.lwjgl.opengl.GL11;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
-import net.whcuk.enforcedprogression.container.ContainerTestGUI;
-import net.whcuk.enforcedprogression.tileentity.TileEntityTestGUI;
+import net.whcuk.enforcedprogression.container.ContainerSawmill;
+import net.whcuk.enforcedprogression.tileentity.TileEntitySawmill;
 
-public class TestGUI extends GuiContainer
+public class GUISawmill extends GuiContainer
 {
 
-	public TestGUI(InventoryPlayer inventoryPlayer, TileEntityTestGUI tileEntity)
+	public GUISawmill(InventoryPlayer inventoryPlayer, TileEntitySawmill tileEntity)
 	{
 		// the container is instantiated and passed to the superclass for handling
-		super(new ContainerTestGUI(inventoryPlayer, tileEntity));
+		super(new ContainerSawmill(inventoryPlayer, tileEntity));
 	}
 
 	@Override
@@ -33,9 +32,8 @@ public class TestGUI extends GuiContainer
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
-		RenderEngine engine = RenderManager.instance.renderEngine;
-		ResourceLocation location = new ResourceLocation("/gui/test.png");
-		// draw the Gui here, only thing you need to change is the path
+		ResourceLocation location = new ResourceLocation("gui/sawmill.png");
+		// draw the GUI here, only thing you need to change is the path
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.renderEngine.bindTexture(location);
 		int x = (width - xSize) / 2;

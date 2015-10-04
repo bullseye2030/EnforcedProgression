@@ -5,35 +5,29 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.whcuk.enforcedprogression.tileentity.TileEntityTestGUI;
+import net.whcuk.enforcedprogression.tileentity.TileEntitySawmill;
 
-public class ContainerTestGUI extends Container
+public class ContainerSawmill extends Container
 {
 
-	protected TileEntityTestGUI tileEntity;
+	protected TileEntitySawmill tileEntity;
 
-	public ContainerTestGUI(InventoryPlayer inventoryPlayer, TileEntityTestGUI te)
+	public ContainerSawmill(InventoryPlayer inventoryPlayer, TileEntitySawmill te)
 	{
-		tileEntity = te;
 
 		// the Slot constructor takes the IInventory and the slot number in that it binds to
 		// and the x-y coordinates it resides on-screen
-		for (int i = 0; i < 3; i++)
-		{
-			for (int j = 0; j < 3; j++)
-			{
-				addSlotToContainer(new Slot(tileEntity, j + i * 3, 62 + j * 18, 17 + i * 18));
-			}
-		}
+		addSlotToContainer(new Slot(te, 0, 5, 5));
+		addSlotToContainer(new Slot(te, 1, 20, 20));
 
-		// commonly used vanilla code that adds the player's inventory
+		// vanilla code that adds the player's inventory
 		bindPlayerInventory(inventoryPlayer);
 	}
 
 	@Override
 	public boolean canInteractWith(EntityPlayer player)
 	{
-		return tileEntity.isUseableByPlayer(player);
+		return true;
 	}
 
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer)
