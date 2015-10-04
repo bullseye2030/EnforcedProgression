@@ -22,8 +22,8 @@ public class Sawmill extends BlockContainer
 	public Sawmill()
 	{
 		super(Material.rock);
-		setBlockName(Utils.MODID + "blockTestGui");
-		setBlockTextureName(Utils.MODID + "blockTestGui");
+		setBlockName(Utils.MODID + ".block1");
+		setBlockTextureName(Utils.MODID + "block1");
 		setHardness(10);
 		setResistance(5.0F);
 		setCreativeTab(EnforcedProgression.tabEnforcedProgression);

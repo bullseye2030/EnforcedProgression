@@ -24,7 +24,7 @@ public class GUISawmill extends GuiContainer
 	{
 		// draw text and stuff here
 		// the parameters for drawString are: string, x, y, colour
-		Minecraft.getMinecraft().fontRenderer.drawString("Test GUI", 8, 6, 4210752);
+		Minecraft.getMinecraft().fontRenderer.drawString("Sawmill", 8, 6, 4210752);
 		// draws "Inventory" or your regional equivalent
 		Minecraft.getMinecraft().fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, ySize - 96 + 2, 4210752);
 	}
@@ -32,7 +32,7 @@ public class GUISawmill extends GuiContainer
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3)
 	{
-		ResourceLocation location = new ResourceLocation("gui/sawmill.png");
+		ResourceLocation location = new ResourceLocation("textures/gui/sawmill.png");
 		// draw the GUI here, only thing you need to change is the path
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.renderEngine.bindTexture(location);
