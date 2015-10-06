@@ -17,6 +17,11 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 
 	public static ArrayList<ArrayList<ItemStack>> recipeList = new ArrayList<ArrayList<ItemStack>>(); // That's complex, isn't it :D
 
+	/**
+	Adds a recipe to the sawmil
+	@param input An ItemStack representing the input of the recipe
+	@param output An ItemStack which is the result when the input is put in the input slot
+	**/
 	public static void addRecipe(ItemStack input, ItemStack output)
 	{
 		ArrayList<ItemStack> tmpArray = new ArrayList<ItemStack>();
@@ -185,21 +190,31 @@ public class TileEntitySawmill extends TileEntity implements IInventory
 		{
 			ArrayList<ItemStack> tmpArray = recipeList.get(i);
 			IInventory inventory = this;
-			// if (!(inventory.getStackInSlot(0) == null))
-			// {
-			// System.out.println("Inventory Slot 1 is " + inventory.getStackInSlot(1).getDisplayName());
-			// } else
-			// {
-			// System.out.println("Inventory Slot 1 is nothing");
-			// }
-			//System.out.println(inventory.getStackInSlot(0));
+			
+			/* if (!(inventory.getStackInSlot(0) == null))
+			{
+				System.out.println("Inventory Slot 1 is " + inventory.getStackInSlot(1).getDisplayName());
+			} else
+			{
+				System.out.println("Inventory Slot 1 is nothing");
+			}
+			System.out.println(inventory.getStackInSlot(0)); */
+			
 			if (inventory.getStackInSlot(0).areItemStacksEqual(tmpArray.get(0)) && inventory.getStackInSlot(1) == null)
 			{
 				if ((inventory.getStackInSlot(0).stackSize * tmpArray.get(1).stackSize) < 65)
 				{
+					
 					ItemStack output = new ItemStack(tmpArray.get(1),tmpArray.get(1).stackSize*inventory.getStackInSlot(0).stackSize,tmpArray.get(1).getDamageValue())
 					inventory.setInventorySlotContents(1, output);
 					inventory.setInventorySlotContents(0, null); //TODO: Fix :D
+				} else 
+				{
+					int toRemove = 64/tmpArray.get(1).stackSize
+					ItemStack output = new ItemStack(tmpArray.get(1),tmpArray.get(1).stackSize*toRemove, tmpArray.get(1).getDamageValue())
+					inventory.setInventorySlotContents(1, output);
+					ItemStack newInput = new ItemStack(tmpArray.get(1), tmpArray.get(1).stackSize-toRemove, tmpArray.get(1).getDamageValue())
+					inventory.setInventorySlotContents(0, newInput); //TODO: Fix :D
 				}
 				
 				
